@@ -1,0 +1,9 @@
+﻿@model LibraryApp.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@await Html.PartialAsync("_Dashboard", Model)

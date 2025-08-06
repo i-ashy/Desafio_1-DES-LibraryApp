@@ -1,0 +1,65 @@
+﻿@model LibraryApp.Models.DashboardViewModel
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Total de Libros</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.TotalLibros</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-header">Prestados Hoy</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.PrestadosHoy</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-danger mb-3">
+            <div class="card-header">Libros Atrasados</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.Atrasados</h5>
+            </div>
+        </div>
+    </div>
+    <h3 class="mt-4">Préstamos Registrados</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Libro</th>
+                <th>Estudiante</th>
+                <th>Fecha Préstamo</th>
+                <th>Fecha Devolución (límite)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Prestamos)
+            {
+                <tr class="@(p.Libro.Disponible ? "table-success" : "table-danger")">
+                    <td>@p.Libro.Titulo</td>
+                    <td>@p.Estudiante</td>
+                    <td>@p.FechaPrestamo.ToShortDateString()</td>
+                    <td>@p.FechaDevolucion.ToShortDateString()</td>
+                    <td>
+                        @if (!p.Libro.Disponible)
+                        {
+                            <form asp-action="Devolver" asp-controller="Prestamos" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@p.Id"/>
+                                <button type="submit" class="btn btn-primary">Devolver</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <span class="text-success">Devuelto</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
