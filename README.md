@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📌 Library App
 
 ---
@@ -30,3 +31,16 @@ con alertas de libros disponibles, prestados el día actual y libros con entrega
 ---
 
 ⌨️ con ❤️ por [Ashley Mejía L](https://github.com/i-ashy) 😊
+=======
+# Library-App
+<h3>-> Ashley Naomy Mejía Linares | ML211022</h3>
+<br>
+<p>Esta solución contiene:</p>
+<ul>
+<li>Catálogo de libros: CRUD completo (crear, leer, actualizar, eliminar).</li>
+<li>Registro de préstamos: Asociar libros a estudiantes con fechas de
+préstamo/devolución.</li>
+<li>Búsqueda inteligente: Filtrar libros por título/autor en tiempo real.</li>
+<li>Dashboard: Estadísticas de libros prestados/disponibles.</li>
+</ul>
+>>>>>>> ecdefd8f779cc58093d6adb420f6dc7fa0f8a0ba
