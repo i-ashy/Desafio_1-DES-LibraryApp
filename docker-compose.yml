@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  mibiblioteca:
+    image: ${DOCKER_REGISTRY-}mibiblioteca
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+     - ConnectionStrings__LibraryConnection=Server=tcp:ml211022.database.windows.net,1433;Initial Catalog=Libros;Persist Security Info=False;User ID=ml211022;Password=Admin123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;

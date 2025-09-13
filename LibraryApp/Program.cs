@@ -36,6 +36,17 @@ app.MapControllerRoute(
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    SeedData.Initialize(services);
+
+    try
+    {
+        var context = services.GetRequiredService<LibraryDbContext>();
+        context.Database.Migrate();
+
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating or initializing the database.");
+    }
 }
 app.Run();
